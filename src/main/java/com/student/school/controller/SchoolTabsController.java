@@ -12,6 +12,7 @@ import com.student.school.model.*;
 import com.student.school.service.ISchoolTabsService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/schooltabs")
 public class SchoolTabsController {
 
