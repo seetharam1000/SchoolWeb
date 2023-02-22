@@ -1,39 +1,39 @@
-//package com.student.school.controller;
-//
-//import java.io.File;
-//import java.io.IOException;
-//import java.net.URI;
-//import java.net.URISyntaxException;
-//import java.util.List;
-//
-//import javax.validation.Valid;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpMethod;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.RequestEntity;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.client.RestTemplate;
-//import org.springframework.web.multipart.MultipartFile;
-//
-//import com.student.school.global.Global_Methods;
-//import com.student.school.global.Global_URL;
-//import com.student.school.model.Department;
-//import com.student.school.model.Profile_Category;
-//import com.student.school.model.Profile_Details;
+package com.student.school.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.student.school.global.Global_Methods;
+import com.student.school.global.Global_URL;
+import com.student.school.model.Department;
+import com.student.school.model.Profile_Category;
+import com.student.school.model.Profile_Details;
 //import com.student.school.service.Profile_Service;
-//
-//@RestController
-//@RequestMapping("/school")
-//public class Profile_Controller {
-//
+
+@RestController
+@RequestMapping("/school")
+public class Profile_Controller {
+
 //	@Autowired
 //	public RestTemplate restTemplate;
 //
@@ -126,27 +126,27 @@
 //
 //		return profileDelete;
 //	}
-//
-//	@RequestMapping(value = "/uploadImages", method = RequestMethod.POST, consumes = {
-//			"multipart/form-data" }, produces = MediaType.APPLICATION_JSON_VALUE, headers = {
-//					"content-type=application/json", "X-Content-Type-Options=nosniff" })
-//	@ResponseBody
-//	public boolean uploadImages(@RequestParam("file") MultipartFile file, @Valid @RequestParam String profile_Id,
-//			@Valid @RequestParam String profile_Folder) throws Exception {
-//		boolean status = false;
-//
-//		File imageDirectory = new File(
-//				Global_URL.DIRECTORY + profile_Folder + "\\" + profile_Id + ".png");
-//
-//		if (!imageDirectory.exists())
-//			imageDirectory.mkdirs();
-//
-//		file.transferTo(imageDirectory);
-//		status = true;
-//		return status;
-//
-//	}
-//
-//
-//
-//}
+
+	@RequestMapping(value = "/uploadImages", method = RequestMethod.POST, consumes = {
+			"multipart/form-data" }, produces = MediaType.APPLICATION_JSON_VALUE, headers = {
+					"content-type=application/json", "X-Content-Type-Options=nosniff" })
+	@ResponseBody
+	public boolean uploadImages(@RequestParam("file") MultipartFile file, @Valid @RequestParam String profile_Id,
+			@Valid @RequestParam String profile_Folder) throws Exception {
+		boolean status = false;
+
+		File imageDirectory = new File(
+				Global_URL.DIRECTORY + profile_Folder + "\\" + profile_Id + ".png");
+
+		if (!imageDirectory.exists())
+			imageDirectory.mkdirs();
+
+		file.transferTo(imageDirectory);
+		status = true;
+		return status;
+
+	}
+
+
+
+}

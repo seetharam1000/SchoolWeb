@@ -24,6 +24,7 @@ public class Global_URL {
 	public static String IMAGE_FORMAT = ".png";
 
 	// Image path
-	public static String DIRECTORY = "D:\\School\\";
+//	public static String DIRECTORY = "D:\\School\\";
 
+	public static String DIRECTORY = "https://schoolimages.blob.core.windows.net/schlimages/";
 }
