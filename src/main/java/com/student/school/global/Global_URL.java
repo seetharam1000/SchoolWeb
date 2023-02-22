@@ -16,11 +16,11 @@ public class Global_URL {
 	public static String LOGIN_SCHOOL_MENU = "http://schoolmenu/schoolmenu/login/";
 	public static String REGISTER_SCHOOL_MENU = "http://schoolmenu/schoolmenu/register/";
 
-	public static String PROFILE_IMAGE_PATH = "Profile\\";
-	public static String SCHOOLPROFILEFOLDER = "SchoolProfile";
-	public static String SCHOOLABOUTFOLDER = "SchoolAbout";
-	public static String SCHOOLPROGRAMFOLDER = "SchoolPrograms";
-	public static String SCHOOLSTUDENTDEVELOPMENTFOLDER = "SchoolStudentsDevelopment\\";
+	public static String PROFILE_IMAGE_PATH = "Profile/";
+	public static String SCHOOLPROFILEFOLDER = "SchoolProfile/";
+	public static String SCHOOLABOUTFOLDER = "SchoolAbout/";
+	public static String SCHOOLPROGRAMFOLDER = "SchoolPrograms/";
+	public static String SCHOOLSTUDENTDEVELOPMENTFOLDER = "SchoolStudentsDevelopment/";
 	public static String IMAGE_FORMAT = ".png";
 
 	// Image path
