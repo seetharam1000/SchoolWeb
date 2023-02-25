@@ -8,7 +8,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.azure.storage.blob.BlobClient;
+import com.azure.storage.blob.BlobContainerClient;
+import com.azure.storage.blob.BlobContainerClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -28,6 +32,9 @@ import com.student.school.model.Profile_Details;
 @CrossOrigin(origins = "*")
 @RequestMapping("/school")
 public class Profile_Controller {
+
+	@Value("${azusrProgramPath}")
+	private String azusrProgramPath;
 
 //	@Autowired
 //	public RestTemplate restTemplate;
@@ -130,18 +137,31 @@ public class Profile_Controller {
 			@Valid @RequestParam String profile_Folder) throws Exception {
 		boolean status = false;
 
-		File imageDirectory = new File(
-				Global_URL.DIRECTORY + profile_Folder + "\\" + profile_Id + ".png");
+//		File imageDirectory = new File(
+//				Global_URL.DIRECTORY + profile_Folder + "\\" + profile_Id + ".png");
+//
+//		if (!imageDirectory.exists())
+//			imageDirectory.mkdirs();
+//
+//		file.transferTo(imageDirectory);
+		azureimageUpload(file, profile_Id + ".png");
 
-		if (!imageDirectory.exists())
-			imageDirectory.mkdirs();
-
-		file.transferTo(imageDirectory);
 		status = true;
 		return status;
 
 	}
 
+	public void azureimageUpload(MultipartFile file, String filename) throws IOException{
 
+//		String constr = "DefaultEndpointsProtocol=https;AccountName=schoolimages;AccountKey=3CNQezXCixIkcL4M4riPrKmMo9AF/w62H2aQBI8briV0vv/W01SpayB/BWMgxTDGu1Yg6IDGl4O5+AStCjeUeg==;EndpointSuffix=core.windows.net";
 
+		BlobContainerClient containter = new BlobContainerClientBuilder()
+				.connectionString(azusrProgramPath)
+				.containerName("schlimages/SchoolPrograms")
+				.buildClient();
+
+		BlobClient blob = containter.getBlobClient(filename);
+
+		blob.upload(file.getInputStream(), file.getSize(), true);
+	}
 }
